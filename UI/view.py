@@ -14,7 +14,7 @@ class View(ft.UserControl):
         # graphical elements
         self._title = None
 
-        self._txt_result = None
+        self.txt_result = None
 
     def load_interface(self):
         # title
@@ -26,9 +26,19 @@ class View(ft.UserControl):
         self._btnCalcola = ft.ElevatedButton(text="Calcola Confini", on_click=self._controller.handleCalcola)
         row1 = ft.Row([self._txtAnno, self._btnCalcola], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
+
+        # ROW with controls
+        self._dropStato = ft.Dropdown(disabled=True)
+        self._btnVicini = ft.ElevatedButton(text="Calcola Vicini", on_click=self._controller.handleVicini)
+        row1 = ft.Row([self._dropStato, self._btnVicini], alignment=ft.MainAxisAlignment.CENTER)
+        self._page.controls.append(row1)
+
+
+
+
         # List View where the reply is printed
-        self._txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
-        self._page.controls.append(self._txt_result)
+        self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
+        self._page.controls.append(self.txt_result)
         self._page.update()
 
     @property
